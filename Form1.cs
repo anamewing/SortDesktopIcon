@@ -42,8 +42,9 @@ namespace SortDesktopIcon
             for (int i=0;i<icoObj.Count;i++)
             {
                 IcoObj ico=icoObj[i];
-                if (icoDics.ContainsKey(ico.name))
+                if (icoDics.ContainsKey(ico.name)||icoDics.ContainsKey(ico.name+"?"))
                 {
+                    ico.name = icoDics.ContainsKey(ico.name) ? ico.name : ico.name + "?";
                     Point newPoint = icoDics[ico.name].itemPoint;
                     WinAPI.SendMessage(ico.itemIntPtr, WinAPI.LVM_SETITEMPOSITION, i, WinAPI.MAKELPARAM(newPoint.X, newPoint.Y));
                     icoDics.Remove(ico.name);
