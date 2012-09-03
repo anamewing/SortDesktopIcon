@@ -13,12 +13,13 @@ namespace SortDesktopIcon
     {
         IList<IcoObj> icoObj;
         IDictionary<string, IcoObj> icoDics;
+        IList<heartanime> icoanimes=new List<heartanime>();
         DesktopIcon myDesktopIcon;
         public Form1()
         {
             InitializeComponent();
             myDesktopIcon = new DesktopIcon();
-            
+            icoObj = myDesktopIcon.getICO();
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -51,6 +52,35 @@ namespace SortDesktopIcon
 
                 }
             }
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            
+            button1.PerformClick();
+            heartanime.count = icoObj.Count;
+            for (int i = 0; i < icoObj.Count; i++)
+            {
+                icoanimes.Add(new heartanime(icoObj[i], i));
+            }
+
+            timer1.Enabled = true;
+        }
+
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            heartanime.nextT();
+            foreach (heartanime ia in icoanimes)
+            {
+                ia.move();
+            }
+                
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            timer1.Enabled = false;
+            button2.PerformClick();
         }
 
         

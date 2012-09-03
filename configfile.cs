@@ -42,7 +42,7 @@ namespace SortDesktopIcon
         public IDictionary<string, IcoObj> readfile()
         {
             IDictionary<string, IcoObj> icoDics = new Dictionary<string, IcoObj>();
-            bool succeed = true;
+            //bool succeed = true;
             StreamReader sr1 = new StreamReader(filename);
             while (sr1.Peek() >= 0)
             {
